@@ -1,0 +1,191 @@
+
+
+
+
+
+  <html>
+
+<!--
+<style>
+  body {font-family: Arial, Helvetica, sans-serif;}
+  * {box-sizing: border-box}
+  
+  /* Full-width input fields */
+  input[type=text], input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+  }
+  
+  input[type=text]:focus, input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+  }
+  
+  hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+  }
+  
+  /* Set a style for all buttons */
+  button {
+      background-color: #8caff0;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+  }
+  
+  button:hover {
+      opacity:1;
+  }
+  
+  /* Extra styles for the cancel button */
+  .cancelbtn {
+      padding: 14px 20px;
+      background-color: #f44336;
+  }
+  
+  /* Float cancel and signup buttons and add an equal width */
+  .cancelbtn, .signupbtn {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Add padding to container elements */
+  .container {
+      padding: 16px;
+  }
+  
+  /* Clear floats */
+  .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
+  }
+  
+  .submitbutton{
+
+    width: 80px;
+    height: 30;
+    background-color:#f1f1f1;
+    border-radius: 1px;
+  }
+  /* Change styles for cancel button and signup button on extra small screens */
+  @media screen and (max-width: 300px) {
+      .cancelbtn, .signupbtn {
+         width: 100%;
+      }
+  }
+  </style>
+  -->
+
+
+
+
+<head>
+  <link rel="stylesheet" href="/styles/bootstrap.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+
+    <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="/dependencies/jquery.validate.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.js"></script>
+
+
+
+
+<script>
+      jQuery(document).ready(function($){
+
+$("#signupform").validate({
+        rules: {
+          name: {
+            required: true,
+            minlength: 2
+          },
+          password: {
+            required: true,
+            minlength: 5
+          },
+         
+          email: {
+            required: true,
+            validemail: true
+          },
+      },
+         
+         messages: { 
+       
+           name: {
+             required: "Please enter a username",
+             minlength: "Your username must consist of at least 2 characters"
+           },
+           password: {
+             required: "Please provide a password",
+             minlength: "Your password must be at least 5 characters long"
+           },
+          
+           validemail: "Please enter a valid email address",
+           
+         },
+  
+    });
+
+
+
+    jQuery.validator.addMethod("validemail" , function(value, element){
+      return this.optional(element) || /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
+    }, "only gmails are allowed");
+    
+
+      })
+  </script>
+
+
+
+</head>
+  <body>
+    <div class="container">
+      <h1>SignUp</h1>
+
+     <form action="/signup" method="post" id="signupform">
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" aria-describedby="nameHelp" name="name" >
+      </div>      
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" >
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" >
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="Check1">
+        <label class="form-check-label" for="Check1">Check me out</label>
+      </div>
+      <button type="submit" class="btn btn-primary">SignUp</button>
+     </form>
+    
+    
+
+    </div>
+
+
+  </body>
+</html> 
+
+
+
+
+
+
